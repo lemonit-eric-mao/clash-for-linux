@@ -87,11 +87,12 @@ $ proxy_on
 - 检查服务端口
 
 ```bash
-$ netstat -tln | grep -E '9090|789.'
-tcp        0      0 127.0.0.1:9090          0.0.0.0:*               LISTEN     
-tcp6       0      0 :::7890                 :::*                    LISTEN     
-tcp6       0      0 :::7891                 :::*                    LISTEN     
-tcp6       0      0 :::7892                 :::*                    LISTEN
+$ ss -lntp | grep -E '9090|789.'
+LISTEN 0      4096               *:7892            *:*    users:(("clash-linux-amd",pid=315944,fd=11))
+LISTEN 0      4096               *:7890            *:*    users:(("clash-linux-amd",pid=315944,fd=8))
+LISTEN 0      4096               *:7891            *:*    users:(("clash-linux-amd",pid=315944,fd=9))
+LISTEN 0      4096               *:9090            *:*    users:(("clash-linux-amd",pid=315944,fd=7))
+
 ```
 
 - 检查环境变量
